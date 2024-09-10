@@ -1,0 +1,43 @@
+{% set name = "thermal_heatmap_generator" %}
+{% set version = "0.1" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/jonasklotz/thermal-heatmap-generator/archive/v{{ version }}.tar.gz
+  sha256: <sha256-checksum>
+
+build:
+  noarch: python
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('python') }}
+  host:
+    - python >=3.7,<3.13
+    - pip
+  run:
+    - python >=3.7,<3.13
+    - numpy
+    - scipy
+
+test:
+  imports:
+    - thermal_heatmap_generator
+
+about:
+  home: https://github.com/jonasklotz/thermal-heatmap-generator
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: "A Python package for generating thermal-like heatmaps with customizable heat sources and edges."
+  description: |
+    thermal_heatmap_generator is a Python package designed to create dynamic thermal-like heatmaps
+    with customizable heat sources and Bezier curve-based edges. Ideal for simulations and visualizations.
+
+extra:
+  recipe-maintainers:
+    - jonas-klotz
